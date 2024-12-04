@@ -1,0 +1,16 @@
+name: Build
+
+on:
+  pull_request:
+  issue_comment:
+    types: [created]
+
+jobs:
+  get-context:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Show github context object
+        run: echo $JSON
+        env:
+          JSON: ${{ toJSON(github) }}
